@@ -1,7 +1,5 @@
 module github.com/raphaelfff/gqlgenc
 
-replace github.com/Yamashou/gqlgenc => ./
-
 go 1.14
 
 require (
