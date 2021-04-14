@@ -13,7 +13,7 @@ import (
 func mutateHook(b *ModelBuild) *ModelBuild {
 	for _, o := range Models {
 		for _, f := range o.Fields {
-			f.Tag = f.Tag+" "+`graphql:"` + field.Name + `"`
+			f.Tag = f.Tag+" "+`graphql:"` + f.Name + `"`
 		}
 	}
 	
