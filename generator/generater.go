@@ -10,8 +10,8 @@ import (
 	"golang.org/x/xerrors"
 )
 
-func mutateHook(b *ModelBuild) *ModelBuild {
-	for _, o := range Models {
+func mutateHook(b *modelgen.ModelBuild) *modelgen.ModelBuild {
+	for _, o := range b.Models {
 		for _, f := range o.Fields {
 			f.Tag = f.Tag+" "+`graphql:"` + f.Name + `"`
 		}
