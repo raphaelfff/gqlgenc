@@ -204,6 +204,7 @@ func LoadConfig(filename string) (*Config, error) {
 		Exec:       config.PackageConfig{Filename: "generated.go"},
 		Directives: map[string]config.DirectiveConfig{},
 		Sources:    sources,
+		StructTag:  "graphql",
 	}
 
 	if err := cfg.Client.Check(); err != nil {
