@@ -23,7 +23,7 @@ func mutateHook(b *ModelBuild) *ModelBuild {
 func Generate(ctx context.Context, cfg *config.Config, option ...api.Option) error {
 	var plugins []plugin.Plugin
 	if cfg.Model.IsDefined() {
-		plugins = append(plugins, &Plugin{
+		plugins = append(plugins, &modelgen.Plugin{
 			MutateHook: mutateHook,
 		})
 	}
