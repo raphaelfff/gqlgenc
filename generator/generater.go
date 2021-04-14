@@ -10,10 +10,22 @@ import (
 	"golang.org/x/xerrors"
 )
 
+func mutateHook(b *ModelBuild) *ModelBuild {
+	for _, o := range Models {
+		for _, f := range o.Fields {
+			f.Tag = f.Tag+" "+`graphql:"` + field.Name + `"`
+		}
+	}
+	
+	return b
+}
+
 func Generate(ctx context.Context, cfg *config.Config, option ...api.Option) error {
 	var plugins []plugin.Plugin
 	if cfg.Model.IsDefined() {
-		plugins = append(plugins, modelgen.New())
+		plugins = append(plugins, &Plugin{
+			MutateHook: mutateHook,
+		})
 	}
 	for _, o := range option {
 		o(cfg.GQLConfig, &plugins)
